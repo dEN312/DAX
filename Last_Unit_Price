@@ -1,0 +1,22 @@
+Last Price = 
+VAR Last_Date =
+CALCULATE(
+    MAX('T1'[Order Date]),
+    FILTER(
+        ALL('Calendar'),
+        'Calendar'[Date] <= MAX('Calendar'[Date])
+    )
+)
+RETURN 
+IF(
+    HASONEVALUE('T1'[Item Type]),
+    SELECTCOLUMNS(
+    FILTER(
+        'T1',
+        'T1'[Order Date] = Last_Date
+    ),
+    "Last Price",
+    [Unit Price]
+    ),
+    "Select Item Type"
+)
