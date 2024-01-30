@@ -1,4 +1,4 @@
-Last Price = 
+Last_Unit_Price = 
 VAR Last_Date =
 CALCULATE(
     MAX('T1'[Order Date]),
